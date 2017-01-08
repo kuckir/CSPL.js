@@ -10,7 +10,7 @@
 			// pivot for column
 			var i_max = 0; var vali = Number.NEGATIVE_INFINITY;
 			for(var i=k; i<m; i++) if(Math.abs(A[i][k])>vali) { i_max = i; vali = Math.abs(A[i][k]);}
-			GR.spline._gaussJ.swapRows(A, k, i_max);
+			CSPL._gaussJ.swapRows(A, k, i_max);
 			
 			//if(A[k][k] == 0) console.log("matrix is singular!");
 			
