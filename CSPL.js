@@ -9,17 +9,16 @@
 		{
 			// pivot for column
 			var i_max = 0; var vali = Number.NEGATIVE_INFINITY;
-			for(var i=k; i<m; i++) if(A[i][k]>vali) { i_max = i; vali = A[i][k];}
-			CSPL._gaussJ.swapRows(A, k, i_max);
+			for(var i=k; i<m; i++) if(Math.abs(A[i][k])>vali) { i_max = i; vali = Math.abs(A[i][k]);}
+			GR.spline._gaussJ.swapRows(A, k, i_max);
 			
-			if(A[i_max][i] == 0) console.log("matrix is singular!");
+			//if(A[k][k] == 0) console.log("matrix is singular!");
 			
 			// for all rows below pivot
 			for(var i=k+1; i<m; i++)
 			{
-				for(var j=k+1; j<m+1; j++)
-					A[i][j] = A[i][j] - A[k][j] * (A[i][k] / A[k][k]);
-				A[i][k] = 0;
+				var cf = (A[i][k] / A[k][k]);
+				for(var j=k; j<m+1; j++)  A[i][j] -= A[k][j] * cf;
 			}
 		}
 		
